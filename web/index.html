@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shin Bot — Website Chính Thức & Tra Cứu Lệnh 24/7</title>
+  <meta name="description"
+    content="Trang chủ và trung tâm tra cứu lệnh Shin Bot Discord 24/7: AutoMod, Ticket, Minigame kinh tế ảo và phát nhạc YouTube Voice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="assets/bot-avatar.png">
+</head>
+
+<body class="dark-theme">
+
+  <!-- Header / Navigation Bar (Nouridio Style) -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#/" class="nav-brand">
+        <div class="brand-avatar-wrapper">
+          <img
+            src="assets/bot-avatar.png"
+            width="44"
+            height="44" alt="Shin Bot Avatar" class="brand-logo-img">
+          <span class="status-pulse"></span>
+        </div>
+        <div class="brand-info">
+          <div class="brand-title">
+            <span class="brand-name">SHIN BOT</span>
+            <span class="brand-badge">24/7 ONLINE</span>
+          </div>
+          <span class="brand-sub">Python 3.11 • Hybrid Commands</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#/" class="nav-link active">Home</a>
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#commands" class="nav-link">Commands</a>
+        <a href="#automod" class="nav-link">AutoMod</a>
+        <a href="#economy" class="nav-link">Economy</a>
+        <a href="#music" class="nav-link">Music</a>
+        <a href="#deployment" class="nav-link">Docs</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="quick-copy-prefix" class="btn btn-outline btn-sm" title="Sao chép Prefix mặc định (.)">
+          <span>Prefix: <code>.</code></span>
+          <span class="copy-icon">📋</span>
+        </button>
+        <button id="sound-toggle-btn" class="btn btn-icon" title="Bật/Tắt hiệu ứng âm thanh">
+          <span id="sound-icon">🔊</span>
+        </button>
+        <button id="snow-toggle-btn" class="btn btn-icon" title="Bật/Tắt hiệu ứng bông tuyết rơi">
+          <span id="snow-icon">❄️</span>
+        </button>
+        <a href="#commands" class="btn login-btn">
+          <span>LỆNH BOT</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nouridio Hero Heading Section (.heading) with wavy-purple background -->
+  <section class="heading hero-section">
+    <div class="hero-container">
+      <div class="hero-avatar-showcase">
+        <div class="hero-avatar-ring">
+          <img
+            src="assets/bot-avatar.png"
+            alt="Shin Bot Avatar" class="hero-bot-avatar-img">
+          <span class="hero-status-dot" title="24/7 Online"></span>
+        </div>
+      </div>
+      <h1 class="display-5 title">It's time to use Shin Bot in your server.</h1>
+      <p class="subtitle">
+        Shin Bot is a multi-purpose bot ready to skill up and boost up your Discord server.<br />
+        Tự động bảo vệ với <strong>AutoMod 24/7</strong>, hệ thống <strong>Ticket & lưu Transcript</strong>,
+        <strong>Kinh tế ảo & Minigame (tỉ lệ 45%)</strong>, và phát nhạc <strong>YouTube 192k Voice</strong>!
+      </p>
+
+      <div class="hero-cta-buttons">
+        <a class="btn btn-primary btn-lg" href="#commands">Get Started ⚡</a>
+        <a class="btn btn-secondary btn-lg"
+          href="https://discord.com/oauth2/authorize?client_id=1559207843905798195&permissions=8&integration_type=0&scope=bot"
+          target="_blank" rel="noopener">Add to Server 🤖</a>
+      </div>
+
+      <!-- Quick Search Box (Nouridio themed) -->
+      <div class="hero-search-wrapper">
+        <div class="hero-search-box">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="main-search-input"
+            placeholder="Tìm kiếm nhanh tên lệnh, bí danh, quyền hạn (ví dụ: ping, blackjack, mute, say...)"
+            autocomplete="off">
+          <button id="clear-search-btn" class="clear-btn" style="display: none;" title="Xóa tìm kiếm">✕</button>
+          <div class="search-shortcut">
+            <kbd>/</kbd> hoặc <kbd>Ctrl</kbd>+<kbd>K</kbd>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nouridio Features Section (.features) with wavy-dark wave transition -->
+  <section id="features" class="features">
+    <div class="features-header">
+      <h2 class="title">Features of Shin Bot</h2>
+      <div class="subtitle">We provide you the best features in Shin Bot!</div>
+    </div>
+
+    <div class="cards features-grid-nouridio">
+      <div class="card feature-card-nouridio">
+        <div class="card-body">
+          <div class="card-icon-badge">🛡️</div>
+          <h5 class="card-title">AutoMod 24/7</h5>
+          <p class="card-text">Bảo vệ máy chủ liên tục 24/7 với 4 quy tắc cốt lõi: Anti-Invite, Anti-Links, Anti-Flood
+            và Bộ lọc từ thô tục. Cơ chế Double Log độc quyền gửi đồng thời về Server Log và DM Owner.</p>
+        </div>
+      </div>
+
+      <div class="card feature-card-nouridio">
+        <div class="card-body">
+          <div class="card-icon-badge">💰</div>
+          <h5 class="card-title">Economy & Games</h5>
+          <p class="card-text">Hệ thống ví tiền ảo toàn cầu, bảng xếp hạng Cyberpunk bục vinh danh Top 10, cùng các
+            minigame Xì dách Blackjack 21 điểm, Gỡ bom Mines 4x5 và Tung đồng xu Coinflip.</p>
+        </div>
+      </div>
+
+      <div class="card feature-card-nouridio">
+        <div class="card-body">
+          <div class="card-icon-badge">🎵</div>
+          <h5 class="card-title">192k Music Voice</h5>
+          <p class="card-text">Phát nhạc YouTube 192kbps chất lượng phòng thu với bộ đệm FFmpeg 256k chống lag, đài phát
+            thanh Radio trực tuyến 24/7, tự động kết nối lại khi mạng chập chờn.</p>
+        </div>
+      </div>
+
+      <div class="card feature-card-nouridio">
+        <div class="card-body">
+          <div class="card-icon-badge">🎫</div>
+          <h5 class="card-title">Ticket & Transcript</h5>
+          <p class="card-text">Hệ thống hỗ trợ thành viên chuyên nghiệp qua nút bấm tương tác, phân quyền hỗ trợ riêng
+            tư, tự động xuất file HTML transcript đầy đủ khi đóng phiên.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nouridio Statistics Section (.statistics) -->
+  <section class="statistics">
+    <div class="statistics-container">
+      <div class="cards stats-grid-nouridio">
+        <div class="card statistic">
+          <div class="card-body">
+            <p class="card-title stat-big-num" id="stat-total-cmds">95+</p>
+            <p class="stat-big-label">Lệnh Đầy Đủ</p>
+          </div>
+        </div>
+
+        <div class="card statistic">
+          <div class="card-body">
+            <p class="card-title stat-big-num" id="stat-total-cats">9</p>
+            <p class="stat-big-label">Nhóm Chức Năng</p>
+          </div>
+        </div>
+
+        <div class="card statistic">
+          <div class="card-body">
+            <p class="card-title stat-big-num">100%</p>
+            <p class="stat-big-label">Hỗ Trợ Hybrid (/ & .)</p>
+          </div>
+        </div>
+
+        <div class="card statistic">
+          <div class="card-body">
+            <p class="card-title stat-big-num">24/7</p>
+            <p class="stat-big-label">Uptime Watchdog</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commands Explorer Section -->
+  <section id="commands" class="section explorer-section">
+    <div class="section-container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">Trung Tâm Tra Cứu Lệnh</h2>
+          <p class="section-subtitle">Lọc theo danh mục, cấp độ quyền hạn hoặc tìm kiếm điều kiện cụ thể</p>
+        </div>
+        <div class="results-badge">
+          Hiển thị <span id="filtered-count" class="highlight-count">78</span> lệnh
+        </div>
+      </div>
+
+      <!-- Category Filter Pills -->
+      <div class="category-tabs" id="category-tabs">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Secondary Filter Bar (Permissions, Type, Sort) -->
+      <div class="filters-toolbar">
+        <div class="filter-group">
+          <label class="filter-label">Quyền Hạn:</label>
+          <select id="perm-filter" class="filter-select">
+            <option value="all">Tất cả quyền hạn</option>
+            <option value="everyone">Tất cả thành viên (Không cần quyền)</option>
+            <option value="moderator">Quản trị viên (Mute / Kick / Ban / Clear)</option>
+            <option value="manage_guild">Quản lý máy chủ (Manage Server)</option>
+            <option value="admin">Quản trị tối cao (Administrator)</option>
+            <option value="owner">Chỉ Chủ Bot (Owner Only)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Loại Lệnh:</label>
+          <select id="type-filter" class="filter-select">
+            <option value="all">Tất cả định dạng</option>
+            <option value="hybrid">Lệnh Kép Hybrid (/ và .)</option>
+            <option value="slash">Chỉ Slash Command (/)</option>
+            <option value="prefix">Chỉ Lệnh Prefix (.)</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label class="filter-label">Sắp Xếp:</label>
+          <select id="sort-select" class="filter-select">
+            <option value="default">Mặc định (Theo danh mục)</option>
+            <option value="name-asc">Tên lệnh (A → Z)</option>
+            <option value="name-desc">Tên lệnh (Z → A)</option>
+            <option value="perm">Cấp độ quyền (Thấp → Cao)</option>
+          </select>
+        </div>
+
+        <button id="reset-filters-btn" class="btn btn-outline btn-sm">
+          <span>🔄 Đặt Lại Bộ Lọc</span>
+        </button>
+      </div>
+
+      <!-- Commands Grid Container -->
+      <div class="commands-grid" id="commands-grid">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="no-results-state" class="empty-state" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h3 class="empty-title">Không Tìm Thấy Lệnh Phù Hợp</h3>
+        <p class="empty-desc">Không có lệnh nào khớp với từ khóa tìm kiếm hoặc bộ lọc hiện tại của bạn.</p>
+        <button id="reset-search-empty-btn" class="btn btn-primary btn-sm">Đặt lại bộ lọc</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- AutoMod 24/7 Deep Dive Section -->
+  <section id="automod" class="section automod-section">
+    <div class="section-container">
+      <div class="section-header center">
+        <div class="pill-tag pill-danger">BẢO MẬT TỐI CAO</div>
+        <h2 class="section-title">Hệ Thống Kiểm Duyệt Tự Động AutoMod 24/7</h2>
+        <p class="section-subtitle">Bảo vệ máy chủ liên tục 24/7 với 4 quy tắc cốt lõi, cơ chế Double Log và tùy chỉnh
+          hình phạt riêng biệt</p>
+      </div>
+
+      <div class="automod-grid">
+        <div class="automod-card">
+          <div class="automod-card-header">
+            <div class="rule-icon">🚫</div>
+            <div>
+              <h3>Anti-Invite</h3>
+              <span class="rule-badge">Chặn Link Mời Discord</span>
+            </div>
+          </div>
+          <p class="rule-desc">Tự động phát hiện và ngăn chặn mọi đường link mời tham gia máy chủ Discord khác
+            (discord.gg/..., discord.com/invite/...).</p>
+          <div class="rule-conditions">
+            <div class="cond-item"><strong>Điều kiện:</strong> Bật qua <code>.antiinvite on</code> (hoặc
+              <code>.automod on</code>), quét link mời Discord</div>
+            <div class="cond-item"><strong>Chế độ kênh:</strong> Hỗ trợ 3 chế độ: <code>Tất cả kênh</code> (all),
+              <code>Chỉ định kênh</code> (only), hoặc <code>Ngoại lệ kênh</code> (ignore) qua
+              <code>.invitechannel</code> hoặc <code>.antiinvite channel</code></div>
+            <div class="cond-item"><strong>Ngoại lệ vai trò:</strong> Các vai trò được thêm vào Whitelist qua lệnh
+              <code>.invitebypass add @role</code></div>
+            <div class="cond-item"><strong>Hình phạt:</strong> Xóa tin nhắn (mặc định) hoặc Timeout / Kick / Ban linh
+              hoạt</div>
+          </div>
+        </div>
+
+        <div class="automod-card">
+          <div class="automod-card-header">
+            <div class="rule-icon">🔗</div>
+            <div>
+              <h3>Anti-Links</h3>
+              <span class="rule-badge badge-cyan">Chặn Mọi Liên Kết / URL</span>
+            </div>
+          </div>
+          <p class="rule-desc">Ngăn chặn triệt để mọi đường link web (http, https, www, domain rút gọn, trang web bên
+            ngoài) tránh spam và quảng cáo trái phép.</p>
+          <div class="rule-conditions">
+            <div class="cond-item"><strong>Điều kiện:</strong> Bật qua <code>.antilink on</code>, quét toàn bộ URL /
+              domain web</div>
+            <div class="cond-item"><strong>Chế độ kênh:</strong> Hỗ trợ 3 chế độ: <code>Tất cả kênh</code> (all),
+              <code>Chỉ định kênh</code> (only), hoặc <code>Ngoại lệ kênh</code> (ignore) qua <code>.linkchannel</code>
+              hoặc <code>.antilink channel</code></div>
+            <div class="cond-item"><strong>Ngoại lệ vai trò:</strong> Các vai trò được thêm vào Whitelist qua lệnh
+              <code>.linkbypass add @role</code></div>
+            <div class="cond-item"><strong>Hình phạt:</strong> Xóa tin (mặc định) hoặc Timeout / Kick / Ban linh hoạt
+            </div>
+          </div>
+        </div>
+
+        <div class="automod-card">
+          <div class="automod-card-header">
+            <div class="rule-icon">🌊</div>
+            <div>
+              <h3>Anti-Flood Chat</h3>
+              <span class="rule-badge badge-blue">Chống Spam Dồn Dập</span>
+            </div>
+          </div>
+          <p class="rule-desc">Ngăn chặn tình trạng spam tin nhắn dồn dập, gửi liên tục nhiều tin trong tích tắc làm
+            nghẽn kênh chat.</p>
+          <div class="rule-conditions">
+            <div class="cond-item"><strong>Ngưỡng kích hoạt:</strong> Gửi từ <strong>5 tin nhắn trở lên</strong> trong
+              vòng <strong>3.5 giây</strong></div>
+            <div class="cond-item"><strong>Xử lý:</strong> Tự động xóa tin nhắn dồn dập và áp dụng hình phạt Timeout
+            </div>
+            <div class="cond-item"><strong>Tối ưu:</strong> Bộ nhớ đệm tự động dọn rác (Prune Cache) sau mỗi 5 phút
+            </div>
+          </div>
+        </div>
+
+        <div class="automod-card">
+          <div class="automod-card-header">
+            <div class="rule-icon">🤬</div>
+            <div>
+              <h3>Profanity Filter</h3>
+              <span class="rule-badge badge-purple">Bộ Lọc Từ Ngữ Thô Tục</span>
+            </div>
+          </div>
+          <p class="rule-desc">Kiểm soát từ ngữ thô tục, chửi thề, lăng mạ xúc phạm nặng nề cả tiếng Việt và tiếng Anh
+            có chọn lọc chuẩn xác.</p>
+          <div class="rule-conditions">
+            <div class="cond-item"><strong>Đặc điểm:</strong> Đã loại trừ từ viết tắt vô hại, chỉ phạt từ ngữ thô tục rõ
+              ràng</div>
+            <div class="cond-item"><strong>Hình phạt:</strong> Xóa tin nhắn kèm cảnh báo hoặc Timeout tạm thời</div>
+            <div class="cond-item"><strong>Cấu hình:</strong> Tùy chỉnh mức phạt qua lệnh
+              <code>.setruleaction badwords</code></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Double Log Workflow Box -->
+      <div class="double-log-box">
+        <div class="double-log-header">
+          <span class="double-log-icon">🔔</span>
+          <div>
+            <h3>Cơ Chế Double Log Độc Quyền</h3>
+            <p>Khi phát hiện vi phạm, hệ thống tự động thi hành xử phạt và gửi báo cáo đồng thời tới 2 nơi:</p>
+          </div>
+        </div>
+        <div class="workflow-steps">
+          <div class="step-card">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>Kênh Log Server</h4>
+              <p>Gửi Embed chi tiết vào kênh thiết lập qua <code>.setlogchannel #kênh</code>: Ghi rõ người vi phạm, nội
+                dung tin nhắn, quy tắc vi phạm và hình phạt.</p>
+            </div>
+          </div>
+          <div class="step-arrow">➔</div>
+          <div class="step-card">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>Tin Nhắn Riêng Cho Chủ Bot (DM Owner)</h4>
+              <p>Gửi bản sao cảnh báo bảo mật trực tiếp về DM của Chủ nhân Bot (ID: <code>1544362205166837801</code>) để
+                giám sát từ xa mọi lúc mọi nơi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Economy & Minigame Deep Dive Section -->
+  <section id="economy" class="section economy-section">
+    <div class="section-container">
+      <div class="section-header center">
+        <div class="pill-tag pill-gold">HỆ THỐNG KINH TẾ & LEVELING</div>
+        <h2 class="section-title">Kinh Tế Ảo, Minigame & Cấp Độ Toàn Cầu</h2>
+        <p class="section-subtitle">Đồng bộ số dư ví xu trên mọi máy chủ, bảng xếp hạng Top đại gia và các minigame đổi
+          thưởng lôi cuốn</p>
+      </div>
+
+      <div class="eco-grid">
+        <div class="eco-card">
+          <div class="eco-card-top">
+            <span class="eco-icon">🃏</span>
+            <h3>Xì Dách Blackjack (21 Điểm)</h3>
+          </div>
+          <p>Mô phỏng sòng bạc chân thực với bộ bài 4 cỗ (shoe), luật lá Ace linh hoạt (1 hoặc 11 điểm). Tương tác trực
+            tiếp bằng nút bấm Discord UI:</p>
+          <ul class="eco-list">
+            <li><strong>Rút Bài (Hit 🃏):</strong> Rút thêm 1 lá bài mới từ cỗ bài</li>
+            <li><strong>Dừng (Stand 🛑):</strong> Giữ nguyên điểm bài và chuyển lượt cho Nhà Cái</li>
+            <li><strong>Gấp Đôi (Double Down 💰):</strong> Nhân đôi tiền cược và chỉ rút đúng 1 lá duy nhất</li>
+            <li><strong>Thắng Blackjack Tự Nhiên:</strong> Trả thưởng tỉ lệ <strong>3:2</strong> (1.5x tiền cược)</li>
+          </ul>
+        </div>
+
+        <div class="eco-card">
+          <div class="eco-card-top">
+            <span class="eco-icon">💣</span>
+            <h3>Gỡ Bom Mines (4x5 Ô)</h3>
+          </div>
+          <p>Bàn chơi 20 ô ma trận gồm 17 Kim Cương 💎 và 3 Quả Bom 💣 ẩn giấu ngẫu nhiên. Người chơi có quyền làm chủ
+            rủi ro:</p>
+          <ul class="eco-list">
+            <li><strong>Mở Kim Cương:</strong> Hệ số nhân tăng dần: 1.1x → 1.3x → 1.6x → 2.0x → 2.5x → 3.2x... lên tới
+              15x+</li>
+            <li><strong>Rút Thưởng An Toàn:</strong> Bấm nút <code>Rút Thưởng 💰</code> bất cứ lúc nào để bỏ túi toàn bộ
+              số xu thưởng!</li>
+            <li><strong>Đạp Trúng Bom:</strong> Mất toàn bộ số tiền đã cược</li>
+          </ul>
+        </div>
+
+        <div class="eco-card">
+          <div class="eco-card-top">
+            <span class="eco-icon">⭐</span>
+            <h3>Hệ Thống Điểm EXP & Thăng Cấp</h3>
+          </div>
+          <p>Tích lũy kinh nghiệm tự động khi trò chuyện hoặc kết nối kênh thoại để thăng cấp, mở khóa danh hiệu và nhận
+            xu phong phú:</p>
+          <ul class="eco-list">
+            <li><strong>Voice EXP:</strong> Nhận 10–25 XP mỗi phút khi đàm thoại trong Voice Channel</li>
+            <li><strong>Chat EXP:</strong> Nhận 15–30 XP mỗi tin nhắn hợp lệ (cooldown 45 giây chống spam)</li>
+            <li><strong>Thăng Bậc Danh Hiệu:</strong> Tự động cộng xu vào ví và cập nhật vai trò vinh danh</li>
+            <li><strong>Bảng Xếp Hạng:</strong> Xem thứ hạng toàn server bằng lệnh <code>.top</code> hoặc thẻ
+              <code>.rank</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Live Discord Leaderboard Showcase (Matching Design) -->
+      <div class="leaderboard-showcase-container">
+        <div class="leaderboard-showcase-header">
+          <div class="pill-tag pill-gold">GIAO DIỆN BẢNG XẾP HẠNG MỚI</div>
+          <h3>Đồ Họa Bảng Xếp Hạng Cyberpunk Bục Vinh Danh Top 10</h3>
+          <p>Tự động cập nhật danh hiệu <span class="highlight-role">BÁ CHỦ</span> cho Top 1 Bảng Xếp Hạng ngay khi có
+            biến động vị trí</p>
+        </div>
+
+        <div class="discord-leaderboard-card-cyber">
+          <div class="dlb-header-cyber">
+            <div class="dlb-title-wrap">
+              <span class="dlb-trophy-icon">🏆</span>
+              <span class="dlb-title-cyber">BẢNG XẾP HẠNG HOẠT ĐỘNG</span>
+            </div>
+            <div class="dlb-sub-wrap">
+              <span class="dlb-sub-text">TUẦN NÀY • Cập nhật tự động</span>
+              <div class="dlb-neon-bar"><span class="dlb-neon-fill"></span></div>
+            </div>
+          </div>
+
+          <!-- Bục Vinh Danh Top 3 -->
+          <div class="dlb-podium-grid">
+            <!-- Top 2 Bạc -->
+            <div class="dlb-podium-card dlb-podium-top2">
+              <div class="dlb-ribbon-badge ribbon-silver">
+                <span class="ribbon-icon">🥈</span>
+                <span class="ribbon-text">TOP 2</span>
+              </div>
+              <div class="dlb-podium-avatar-wrap ring-silver">
+                <div class="dlb-avatar dlb-avatar-blue">
+                  <svg class="dlb-clyde-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="dlb-podium-name">Khánh_Linh#5678</div>
+              <div class="dlb-podium-stat">Cấp 42 &nbsp;&nbsp; 21,200 XP</div>
+            </div>
+
+            <!-- Top 1 Vàng (Nổi Bật Cao Hơn) -->
+            <div class="dlb-podium-card dlb-podium-top1">
+              <div class="dlb-ribbon-badge ribbon-gold">
+                <span class="ribbon-icon">🥇</span>
+                <span class="ribbon-text">TOP 1</span>
+              </div>
+              <div class="dlb-server-tag">KIOAN</div>
+              <div class="dlb-podium-avatar-wrap ring-gold">
+                <div class="dlb-podium-crown">👑</div>
+                <div class="dlb-avatar dlb-avatar-red">
+                  <svg class="dlb-clyde-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="dlb-podium-name">Nguyen_Anh#1234</div>
+              <div class="dlb-podium-stat stat-gold">Cấp 45 &nbsp;&nbsp; 25,430 XP</div>
+              <div class="dlb-bachu-pill">BÁ CHỦ</div>
+            </div>
+
+            <!-- Top 3 Đồng -->
+            <div class="dlb-podium-card dlb-podium-top3">
+              <div class="dlb-ribbon-badge ribbon-bronze">
+                <span class="ribbon-icon">🥉</span>
+                <span class="ribbon-text">TOP 3</span>
+              </div>
+              <div class="dlb-podium-avatar-wrap ring-bronze">
+                <div class="dlb-avatar dlb-avatar-green">
+                  <svg class="dlb-clyde-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="dlb-podium-name">Minh_Quan#9012</div>
+              <div class="dlb-podium-stat">Cấp 38 &nbsp;&nbsp; 18,950 XP</div>
+            </div>
+          </div>
+
+          <!-- Bảng 2 Cột hiển thị Ranks #4 đến #10 -->
+          <div class="dlb-two-col-ranks">
+            <div class="dlb-rank-col">
+              <div class="dlb-rank-item">
+                <span class="dlb-rank-num">#4</span>
+                <div class="dlb-rank-av">👤</div>
+                <span class="dlb-rank-name">Lan_Phuong#3456</span>
+                <span class="dlb-rank-stat">📊 Cấp 35 — 15,200 XP</span>
+              </div>
+              <div class="dlb-rank-item">
+                <span class="dlb-rank-num">#5</span>
+                <div class="dlb-rank-av">👤</div>
+                <span class="dlb-rank-name">Bao_An#7890</span>
+                <span class="dlb-rank-stat">📊 Cấp 32 — 13,800 XP</span>
+              </div>
+              <div class="dlb-rank-item">
+                <span class="dlb-rank-num">#6</span>
+                <div class="dlb-rank-av">👤</div>
+                <span class="dlb-rank-name">Hoang_Nam#1122</span>
+                <span class="dlb-rank-stat">📊 Cấp 29 — 11,500 XP</span>
+              </div>
+              <div class="dlb-rank-item">
+                <span class="dlb-rank-num">#7</span>
+                <div class="dlb-rank-av">👤</div>
+                <span class="dlb-rank-name">Thuy_Tien#9988</span>
+                <span class="dlb-rank-stat">📊 Cấp 27 — 9,450 XP</span>
+              </div>
+            </div>
+
+            <div class="dlb-rank-col">
+              <div class="dlb-rank-item">
+                <span class="dlb-rank-num">#8</span>
+                <div class="dlb-rank-av">👤</div>
+                <span class="dlb-rank-name">Gia_Huy#4455</span>
+                <span class="dlb-rank-stat">📊 Cấp 24 — 7,800 XP</span>
+              </div>
+              <div class="dlb-rank-item">
+                <span class="dlb-rank-num">#9</span>
+                <div class="dlb-rank-av">👤</div>
+                <span class="dlb-rank-name">Mai_Anh#7766</span>
+                <span class="dlb-rank-stat">📊 Cấp 22 — 6,200 XP</span>
+              </div>
+              <div class="dlb-rank-item">
+                <span class="dlb-rank-num">#10</span>
+                <div class="dlb-rank-av">👤</div>
+                <span class="dlb-rank-name">Tuan_Kiet#3344</span>
+                <span class="dlb-rank-stat">📊 Cấp 19 — 4,950 XP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer và Linh vật Robot -->
+          <div class="dlb-footer-cyber">
+            <span>💡 Tích cực trò chuyện và tham gia voice để thăng hạng!</span>
+          </div>
+          <img src="mascot.png" class="dlb-mascot-img" alt="Discord Bot Mascot" />
+        </div>
+      </div>
+
+      <!-- Quick Bet Syntax Guide Box -->
+      <div class="bet-syntax-box">
+        <h3>💡 Hỗ Trợ Ký Hiệu Đơn Vị Cược Thông Minh</h3>
+        <p>Tất cả các lệnh cá cược (<code>.blackjack</code>, <code>.cf</code>, <code>.gb</code>, <code>.mine</code>,
+          <code>.givecoin</code>) đều hỗ trợ viết tắt tiện lợi:</p>
+        <div class="bet-tokens">
+          <span class="token-chip"><code>1k</code> = 1,000 xu</span>
+          <span class="token-chip"><code>500k</code> = 500,000 xu</span>
+          <span class="token-chip"><code>1m</code> = 1,000,000 xu</span>
+          <span class="token-chip"><code>2.5m</code> = 2,500,000 xu</span>
+          <span class="token-chip token-all"><code>all</code> = Cược tất tay toàn bộ số xu!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Music Voice Player Section -->
+  <section id="music" class="section music-section">
+    <div class="section-container">
+      <div class="section-header center">
+        <div class="pill-tag pill-success">ÂM THANH CHẤT LƯỢNG CAO</div>
+        <h2 class="section-title">Phát Nhạc Voice Channel Tối Ưu Lag</h2>
+        <p class="section-subtitle">Tận hưởng âm nhạc YouTube 192kbps mượt mà với bộ giải mã FFmpeg và cơ chế kết nối ổn
+          định</p>
+      </div>
+
+      <div class="music-features-grid">
+        <div class="music-feature-card">
+          <div class="mf-icon">🚀</div>
+          <h4>Stream Tốc Độ Cao 192k</h4>
+          <p>Tích hợp yt-dlp và FFmpeg buffer 256k, tự động kết nối lại khi mạng chập chờn, chống đứt quãng âm thanh.
+          </p>
+        </div>
+
+        <div class="music-feature-card">
+          <div class="mf-icon">📻</div>
+          <h4>Đài Phát Thanh Radio 24/7</h4>
+          <p>Thưởng thức radio trực tuyến không ngừng nghỉ qua <code>.radio</code>: Lofi Beats, Chillhop, V-Pop, Piano,
+            Coffee Jazz, Deep Sleep.</p>
+        </div>
+
+        <div class="music-feature-card">
+          <div class="mf-icon">🎛️</div>
+          <h4>Hàng Đợi Thông Minh</h4>
+          <p>Kiểm soát toàn diện danh sách phát: <code>.playtop</code> (ưu tiên phát tiếp theo), <code>.playskip</code>,
+            <code>.move</code>, <code>.remove</code>, <code>.skipto</code>.</p>
+        </div>
+
+        <div class="music-feature-card">
+          <div class="mf-icon">📜</div>
+          <h4>Lời Bài Hát & Tìm Kiếm</h4>
+          <p>Tra cứu lời bài hát trực tiếp qua <code>.lyrics</code>, hoặc tìm kiếm chọn từ top 5 kết quả YouTube hàng
+            đầu qua <code>.search</code>.</p>
+        </div>
+
+        <div class="music-feature-card">
+          <div class="mf-icon">⏪</div>
+          <h4>Tua Thời Gian & Lịch Sử</h4>
+          <p>Tua mốc thời gian chính xác bằng <code>.seek 1:30</code>, phát lại từ đầu với <code>.replay</code> hoặc
+            nghe lại bài trước đó với <code>.previous</code>.</p>
+        </div>
+
+        <div class="music-feature-card">
+          <div class="mf-icon">🔁</div>
+          <h4>3 Chế Độ Lặp & Tiết Kiệm</h4>
+          <p>Lặp bài hát hiện tại (<code>loop song</code>), lặp cả hàng đợi (<code>loop queue</code>), tự động ngắt kết
+            nối idle sau 3 phút tiết kiệm tài nguyên.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deployment & 24/7 Operations Guide Section -->
+  <section id="deployment" class="section deployment-section">
+    <div class="section-container">
+      <div class="section-header center">
+        <div class="pill-tag pill-purple">HƯỚNG DẪN VẬN HÀNH</div>
+        <h2 class="section-title">Khởi Chạy 24/7 & Tự Động Phục Hồi Khi Bật Máy</h2>
+        <p class="section-subtitle">Bộ công cụ tự động hóa tích hợp sẵn giúp bot hoạt động liên tục trên Windows Server
+          / VPS</p>
+      </div>
+
+      <div class="deploy-steps-grid">
+        <div class="deploy-card">
+          <div class="deploy-badge">CÁCH 1 • KHUYÊN DÙNG</div>
+          <h3>Cài Đặt Dịch Vụ 24/7 Windows</h3>
+          <p>Đăng ký tác vụ hệ thống <strong>Windows Task Scheduler</strong> tự động chạy ngầm không cần màn hình
+            console:</p>
+          <div class="code-block">
+            <code>powershell -ExecutionPolicy Bypass -File .\install_service.ps1</code>
+            <button class="copy-code-btn" data-copy="powershell -ExecutionPolicy Bypass -File .\install_service.ps1">Sao
+              chép</button>
+          </div>
+          <ul class="deploy-list">
+            <li>✓ Tự khởi động cùng Windows khi Reboot VPS/Server</li>
+            <li>✓ Tự động bật lại trong 1 phút nếu tiến trình bị tắt</li>
+            <li>✓ Không bị giới hạn thời gian 72h của Windows</li>
+          </ul>
+        </div>
+
+        <div class="deploy-card">
+          <div class="deploy-badge">CÁCH 2 • THỦ CÔNG</div>
+          <h3>Chạy Watchdog Auto-Restart</h3>
+          <p>Khởi chạy bot kèm trình giám sát console theo dõi crash và tự khởi động lại sau 5 giây:</p>
+          <div class="code-block">
+            <code>.\run_bot.bat</code>
+            <button class="copy-code-btn" data-copy=".\run_bot.bat">Sao chép</button>
+          </div>
+          <ul class="deploy-list">
+            <li>✓ Hiển thị log trực quan màu sắc Colorama</li>
+            <li>✓ Tự động đếm ngược 5s và mở lại bot nếu gặp ngoại lệ</li>
+            <li>✓ Xem trạng thái hoạt động: <code>status_bot.bat</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Command Detail Modal / Drawer -->
+  <div id="command-modal" class="modal-backdrop" style="display: none;">
+    <div class="modal-container">
+      <div class="modal-header">
+        <div class="modal-title-wrapper">
+          <span class="modal-cmd-icon" id="modal-icon">🏓</span>
+          <div>
+            <div class="modal-cmd-name-row">
+              <h2 id="modal-title">ping</h2>
+              <span id="modal-type-badge" class="badge">Hybrid</span>
+              <span id="modal-cat-badge" class="badge">Tiện Ích</span>
+            </div>
+            <p id="modal-short-desc" class="modal-subtitle">Kiểm tra độ trễ mạng WebSocket</p>
+          </div>
+        </div>
+        <button id="modal-close-btn" class="modal-close-btn" title="Đóng cửa sổ">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Syntax Quick Copy Row -->
+        <div class="modal-syntax-row">
+          <div class="syntax-box">
+            <span class="syntax-label">Prefix Command:</span>
+            <div class="syntax-code">
+              <code id="modal-prefix-syntax">.ping</code>
+              <button class="copy-btn-sm" id="modal-copy-prefix-btn" title="Sao chép lệnh Prefix">📋</button>
+            </div>
+          </div>
+          <div class="syntax-box">
+            <span class="syntax-label">Slash Command:</span>
+            <div class="syntax-code">
+              <code id="modal-slash-syntax">/ping</code>
+              <button class="copy-btn-sm" id="modal-copy-slash-btn" title="Sao chép lệnh Slash">📋</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aliases if any -->
+        <div id="modal-aliases-section" class="modal-section" style="display: none;">
+          <h4 class="modal-section-title">Lệnh Viết Tắt (Aliases)</h4>
+          <div id="modal-aliases-container" class="aliases-tags"></div>
+        </div>
+
+        <!-- Detailed Description -->
+        <div class="modal-section">
+          <h4 class="modal-section-title">Mô Tả Chi Tiết Hoạt Động</h4>
+          <p id="modal-detailed-desc" class="modal-text"></p>
+        </div>
+
+        <!-- Conditions & Rules Checklist -->
+        <div class="modal-section">
+          <h4 class="modal-section-title">Điều Kiện & Ràng Buộc Khi Dùng Lệnh</h4>
+          <div id="modal-conditions-list" class="conditions-checklist">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Parameters Table -->
+        <div class="modal-section" id="modal-params-section">
+          <h4 class="modal-section-title">Danh Sách Tham Số (Parameters)</h4>
+          <div class="table-responsive">
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Tên</th>
+                  <th>Kiểu Dữ Liệu</th>
+                  <th>Bắt Buộc?</th>
+                  <th>Mặc Định</th>
+                  <th>Diễn Giải</th>
+                </tr>
+              </thead>
+              <tbody id="modal-params-tbody">
+                <!-- Rendered dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Interactive Syntax Builder -->
+        <div class="modal-section" id="modal-builder-section">
+          <h4 class="modal-section-title">Trình Tạo Cú Pháp Lệnh Trực Quan</h4>
+          <p class="modal-subtext">Nhập giá trị tham số bên dưới để tự động tạo cú pháp lệnh chuẩn xác:</p>
+          <div id="modal-builder-inputs" class="builder-inputs-grid">
+            <!-- Inputs dynamically rendered -->
+          </div>
+          <div class="builder-output-box">
+            <span class="builder-output-label">Cú Pháp Hoàn Chỉnh:</span>
+            <div class="builder-output-code">
+              <code id="modal-builder-output">.ping</code>
+              <button id="modal-copy-builder-btn" class="btn btn-primary btn-sm">Sao Chép Cú Pháp 📋</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Examples -->
+        <div class="modal-section">
+          <h4 class="modal-section-title">Ví Dụ Thực Tế</h4>
+          <div id="modal-examples-list" class="examples-list">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Discord Embed Simulation -->
+        <div class="modal-section" id="modal-embed-section">
+          <h4 class="modal-section-title">Mô Phỏng Phản Hồi Trong Discord (Preview Embed)</h4>
+          <div class="discord-preview-wrapper">
+            <div class="discord-message">
+              <div class="discord-avatar">
+                <img
+                  src="assets/bot-avatar.png"
+                  alt="Shin Bot Avatar" class="discord-avatar-img">
+              </div>
+              <div class="discord-message-content">
+                <div class="discord-author-row">
+                  <span class="discord-bot-name">Shin Bot</span>
+                  <span class="discord-bot-tag">BOT</span>
+                  <span class="discord-timestamp">Hôm nay lúc 12:00</span>
+                </div>
+                <div class="discord-embed" id="modal-discord-embed">
+                  <div class="embed-color-bar" id="embed-bar"></div>
+                  <div class="embed-content">
+                    <h5 class="embed-title" id="embed-title"></h5>
+                    <p class="embed-desc" id="embed-desc"></p>
+                    <div class="embed-fields" id="embed-fields"></div>
+                    <div class="embed-footer" id="embed-footer"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="modal-close-footer-btn" class="btn btn-outline">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Nouridio Page End Call to Action (.page_end) -->
+  <section class="page_end" id="start_link">
+    <div class="start">
+      <div class="card gs-card">
+        <div class="card-body">
+          <h2 class="title">Ready to try Shin Bot?</h2>
+          <p class="subtitle">Invite Shin Bot and start giving your Discord server cool perks!</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary btn-lg" href="#commands">Get Started ⚡</a>
+            <a class="btn btn-secondary btn-lg"
+              href="https://discord.com/oauth2/authorize?client_id=1559207843905798195&permissions=8&integration_type=0&scope=bot"
+              target="_blank" rel="noopener">Add to Server 🤖</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nouridio Footer (.footer) -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="bot-footer">
+        <img src="assets/BotLogoWord.svg" alt="Shin Bot Logo" width="160" class="footer-logo-word">
+        <p>Copyright © Shin Bot - 2026. All rights reserved.</p>
+      </div>
+
+      <div class="footer-meta-nouridio">
+        <span>👑 Chủ Bot: <strong>Shin_.520</strong> (<code>1544362205166837801</code>)</span>
+        <span>⚡ Python 3.11 • discord.py 2.x • FFmpeg</span>
+        <span>🛡️ 24/7 Watchdog Auto-Restart</span>
+      </div>
+
+
+      <div class="footer-bottom-links">
+        <a href="#/">Home</a> • <a href="#features">Features</a> • <a href="#commands">Commands</a> • <a
+          href="#start_link" class="back-to-top">Lên Đầu Trang ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Snowfall Canvas Overlay -->
+  <canvas id="snow-canvas"></canvas>
+
+  <!-- Interactive Cursor Follower & Diminishing Trail -->
+  <div id="cursor-dot" class="cursor-dot"></div>
+  <div id="cursor-ring" class="cursor-ring"></div>
+  <canvas id="cursor-trail-canvas"></canvas>
+
+  <!-- Scripts -->
+  <script src="commands-data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
