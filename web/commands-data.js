@@ -1632,13 +1632,13 @@ const COMMANDS_DATA = [
     detailed_desc: "Lệnh tra cứu tài chính độc quyền của Chủ Bot. Ghi nhận toàn bộ biến động tài chính của người dùng: nhận xu điểm danh hàng ngày, thưởng thăng cấp level, thắng/thua cược Blackjack, Gỡ Bom, Tung đồng xu, cá cược, chuyển/nhận tiền givecoin. Tích hợp nút bấm chuyển trang, đổi bộ lọc thời gian thực.",
     prefix_syntax: ".history [@user] [all/in/out]",
     slash_syntax: "/history [member: @user] [filter: all/in/out]",
-    permissions: ["Chủ Bot (Owner)"],
+    permissions: ["Chủ Nhân Bot (Chỉ Owner mới thấy và sử dụng được)"],
     perm_level: "owner",
     conditions: [
-      "Chỉ duy nhất tài khoản Chủ Bot (BOT_OWNER_ID) mới có thể thực thi lệnh",
-      "Có thể tra cứu lịch sử nhận/tiêu coin của bất kỳ thành viên nào hoặc chính mình",
+      "Chỉ Chủ Nhân Bot (BOT_OWNER_ID) mới có quyền tra cứu, thấy và sử dụng lịch sử giao dịch xu",
+      "Thành viên thông thường không thể thấy nút bấm hoặc dùng lệnh tra cứu lịch sử",
       "Hỗ trợ bộ lọc nhanh: all (toàn bộ), in hoặc nhan (chỉ nhận xu), out hoặc tieu (chỉ tiêu xu)",
-      "Bảo mật giao diện nút bấm: chỉ Owner mới có thể tương tác chuyển trang hoặc đổi bộ lọc"
+      "Bảo mật giao diện nút bấm: chỉ duy nhất Chủ Bot mới có quyền chuyển trang và đổi bộ lọc"
     ],
     parameters: [
       {
