@@ -1729,9 +1729,9 @@ const COMMANDS_DATA = [
     type: "hybrid",
     type_label: "Hybrid (/ và .)",
     aliases: ["coinflip", "flip"],
-    badge: "Tỉ lệ 45%",
+    badge: "Tỉ lệ 55%",
     description: "Minigame tung đồng xu may rủi đặt cược (chọn mặt Ngửa hoặc Sấp).",
-    detailed_desc: "Đặt cược vào mặt Ngửa ('ngua') hoặc Sấp ('sap'). Tỉ lệ thắng tối đa của người chơi là 45% (nhà cái 55%). Nếu đoán đúng, bạn nhận lại gấp đôi tiền cược (1:1). Kèm hiệu ứng hoạt họa tung đồng xu sinh động.",
+    detailed_desc: "Đặt cược vào mặt Ngửa ('ngua') hoặc Sấp ('sap'). Tỉ lệ thắng của người chơi là 55% và giảm dần theo số coin đặt cược. Nếu đoán đúng, bạn nhận lại gấp đôi tiền cược (1:1). Kèm hiệu ứng hoạt họa tung đồng xu sinh động.",
     prefix_syntax: ".cf <ngua|sap> <số_cược>",
     slash_syntax: "/cf choice: <ngua|sap> bet: <số_cược>",
     permissions: ["Tất cả thành viên"],
@@ -1770,43 +1770,6 @@ const COMMANDS_DATA = [
       color: "#57F287",
       footer: "Lựa chọn của bạn: Ngửa • Tiền cược: 5,000 xu"
     }
-  },
-  {
-    id: "gb",
-    name: "gb",
-    category: "economy",
-    category_name: "Kinh Tế & Minigame",
-    icon: "🎲",
-    type: "hybrid",
-    type_label: "Hybrid (/ và .)",
-    aliases: ["gamble", "bet"],
-    badge: "Jackpot 3x",
-    description: "Minigame thử vận may cá cược số xu bằng xúc xắc may mắn (tỉ lệ trúng thưởng lên đến x3).",
-    detailed_desc: "Hệ thống lắc xúc xắc ngẫu nhiên từ 1 đến 100 điểm:\n• 1 - 49 điểm: Thua sạch tiền cược\n• 50 - 84 điểm: Thắng 1.5x tiền cược\n• 85 - 98 điểm: Thắng 2x tiền cược\n• 99 - 100 điểm: Nổ Jackpot thắng 3x tiền cược!",
-    prefix_syntax: ".gb <số_cược>",
-    slash_syntax: "/gb bet: <số_cược>",
-    permissions: ["Tất cả thành viên"],
-    perm_level: "everyone",
-    conditions: [
-      "Chỉ dùng được trong máy chủ (Guild Only)",
-      "Mức cược tối thiểu: 10 xu",
-      "Hỗ trợ tiền cược viết tắt: 1k, 500k, 1m, all",
-      "Số dư tài khoản phải đủ để đặt cược"
-    ],
-    parameters: [
-      {
-        name: "bet",
-        type: "Chuỗi cược (vd: 50, 5k, 1m, all)",
-        required: true,
-        default: null,
-        description: "Số xu đặt cược"
-      }
-    ],
-    examples: [
-      { cmd: ".gb 200", desc: "Thử vận may với 200 xu" },
-      { cmd: ".gamble 10k", desc: "Cược 10,000 xu" },
-      { cmd: ".gb all", desc: "Tất tay vận may" }
-    ]
   },
   {
     id: "mine",
@@ -1851,6 +1814,42 @@ const COMMANDS_DATA = [
       description: "Đã mở an toàn: **5 Kim Cương 💎**\nTiền thưởng hiện tại: **25,000 xu** (Gốc 10,000 xu)",
       color: "#00D2FF",
       footer: "Bấm [Rút Thưởng 💰] để lấy xu hoặc tiếp tục mở ô!"
+    }
+  },
+  {
+    id: "farm",
+    name: "farm",
+    category: "economy",
+    category_name: "Kinh Tế & Minigame",
+    icon: "🌾",
+    type: "hybrid",
+    type_label: "Hybrid (/ và .)",
+    aliases: ["nongtrai", "trangtrai", "ft"],
+    badge: "Mới • Kiếm Xu",
+    description: "Minigame Nông Trại Vui Vẻ: Gieo hạt giống, tưới nước, thu hoạch nông sản kiếm xu.",
+    detailed_desc: "Bảng điều khiển nông trại tương tác trực tiếp qua nút bấm Discord:\n• Gieo các loại hạt giống (Lúa mì, Cà rốt, Bắp, Dâu tây, Dưa hấu, Hướng dương, Cây Hoàng Kim)\n• Tưới nước 💧 giúp cây chín nhanh hơn 15%\n• Thu hoạch 🌾 nhận lãi lớn và điểm EXP nông nghiệp\n• Tỉ lệ 15% kích hoạt 'Mùa màng bội thu' nhân 1.5x tiền thưởng\n• Mở rộng đất trồng từ 3 lên tới 8 ô đất!",
+    prefix_syntax: ".farm",
+    slash_syntax: "/farm",
+    permissions: ["Tất cả thành viên"],
+    perm_level: "everyone",
+    conditions: [
+      "Chỉ dùng được trong máy chủ (Guild Only)",
+      "Mỗi người chơi có hồ sơ và các ô đất nông trại riêng biệt",
+      "Cần có đủ số dư xu để mua hạt giống hoặc mở rộng đất",
+      "Có thể thu hoạch nhanh bằng lệnh .harvest hoặc tưới nước bằng .water"
+    ],
+    parameters: [],
+    examples: [
+      { cmd: ".farm", desc: "Mở bảng điều khiển nông trại tương tác" },
+      { cmd: ".plant luami", desc: "Gieo hạt lúa mì vào ô đất trống" },
+      { cmd: ".harvest", desc: "Thu hoạch toàn bộ cây trồng đã chín" },
+      { cmd: ".water", desc: "Tưới nước cho toàn bộ cây trồng" }
+    ],
+    embed_preview: {
+      title: "🌾 NÔNG TRẠI VUI VẺ",
+      description: "👨‍🌾 **Cấp Nông Dân:** Cấp 1 • Điểm: 150 EXP\n🏡 **Quy mô:** 3/8 ô đất • 🧺 **Đã thu hoạch:** 5 vụ\n🪙 **Tổng thu nhập:** +15,000 xu\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🟢 **Ô đất #1:** 🌾 Lúa Mì — **ĐÃ CHÍN!** (+100 xu)\n🌱 **Ô đất #2:** 🍓 Dâu Tây — ⏳ Chín lúc: sau 15 phút (💧 Đã tưới)\n🟫 **Ô đất #3:** *Trống — Sẵn sàng gieo hạt 🌱*",
+      color: "#F1C40F",
+      footer: "Nông Trại Tự Động • Dùng nút bấm để gieo hạt, tưới nước và thu hoạch!"
     }
   },
   {

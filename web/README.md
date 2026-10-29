@@ -29,7 +29,7 @@ Sau đó truy cập trình duyệt tại: `http://localhost:8088`
      - 🛠️ **Tiện Ích & Thông Tin** (`ping`, `help`, `serverinfo`, `profile`, `pf`, `avatar`, `say`, `welcome`, `welcomerole`, `setwelcome`, `setsaylog`, `setdmslog`, `setlog` — 13 lệnh)
      - 🛡️ **Quản Trị Máy Chủ** (`clear`, `kick`, `ban`, `unban`, `mute / timeout`, `doiten` — 6 lệnh)
      - 🚨 **Kiểm Duyệt AutoMod 24/7** (`automod`, `antilink`, `linkchannel`, `linkbypass`, `setruleaction`, `setautomodaction`, `setlogchannel`, `invitebypass`, `antiinvite`, `invitechannel` — 10 lệnh)
-     - 💰 **Kinh Tế & Minigame** (`daily`, `coin / bal`, `blackjack`, `cf / coinflip`, `gb / gamble`, `mine / gobom`, `givecoin`, `top / bxh`, `setlevelchannel`, `levelnotify`, `levelroles`, `levelrole` — 12 lệnh)
+     - 💰 **Kinh Tế & Minigame** (`daily`, `coin / bal`, `blackjack`, `cf / coinflip`, `farm / nongtrai`, `mine / gobom`, `givecoin`, `top / bxh`, `setlevelchannel`, `levelnotify`, `levelroles`, `levelrole` — 12 lệnh)
      - 🎵 **Âm Nhạc Voice Channel** (`play`, `playtop`, `playskip`, `search`, `pause`, `resume`, `skip`, `skipto`, `previous`, `replay`, `seek`, `volume`, `loop`, `shuffle`, `queue`, `nowplaying`, `remove`, `clearqueue`, `move`, `lyrics`, `radio`, `join`, `leave`, `stop` — 24 lệnh)
      - 🎉 **Giveaway & Phát Quà** (`gws`, `gcreate`, `gend`, `greroll`, `glist` — 5 lệnh)
      - 🎫 **Hệ Thống Ticket Hỗ Trợ** (`panel`, `close`, `claim`, `unclaim`, `add`, `remove`, `transcript`, `rename`, `setcategory`, `setrole`, `setlog`, `config`, `list` — 13 lệnh)
